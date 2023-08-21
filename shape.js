@@ -1,36 +1,18 @@
 
+function generateSVG(input) {
+  let shapeElement = '';
+  if (input.shape === 'Circle') {
+    shapeElement = `<circle cx="150" cy="115" r="80" fill="${input.shapeColor}" />`;
+  } else if (input.shape === 'Square') {
+    shapeElement = `<rect x="40" y="40" width="220" height="150" fill="${input.shapeColor}" />`;
+  } else if (input.shape === 'Triangle') {
+    shapeElement = `<polygon points="150,40 40,190 260,190" fill="${input.shapeColor}" />`;
+  }
 
-// Define the Triangle class
-export class Triangle {
-    constructor(base, height) {
-      this.base = base;
-      this.height = height;
-    }
-  
-    calculateArea() {
-      return 0.5 * this.base * this.height;
-    }
-  }
-  
-  // Define the Circle class
-  export class Circle {
-    constructor(radius) {
-      this.radius = radius;
-    }
-  
-    calculateArea() {
-      return Math.PI * this.radius * this.radius;
-    }
-  }
-  
-  // Define the Square class
-  export class Square {
-    constructor(side) {
-      this.side = side;
-    }
-  
-    calculateArea() {
-      return this.side * this.side;
-    }
-  }
-  
+  let logo = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">${shapeElement}`;
+  logo += `<text x="35" y="80" font-size="40" fill="${input.textColor}">${input.text}</text></svg>`;
+
+  return logo;
+}
+
+module.exports = generateSVG;
